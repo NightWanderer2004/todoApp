@@ -10,6 +10,8 @@
    "author": "",
    "license": "ISC",
    "devDependencies": {
-      "parcel": "^2.1.1"
+      "autoprefixer": "^10.4.2",
+      "parcel": "^2.1.1",
+      "postcss": "^8.4.5"
    }
 }
