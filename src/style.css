@@ -1,0 +1,316 @@
+:root {
+   --body-bg: #fff;
+   --text: #fefefe;
+   --main: #565656;
+   --input-focus: #676767;
+   --icon-color: #eee;
+}
+*,
+*::before,
+*::after {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+.fa-check-square,
+.fa-minus-square {
+   pointer-events: none;
+}
+body {
+   background-color: var(--body-bg);
+   font-family: 'Montserrat', sans-serif;
+   transition: background-color 0.2s;
+}
+body[class='dark'] {
+   --body-bg: #292a2a;
+   --text: #000;
+   --main: #fff;
+   --input-focus: rgba(255, 255, 255, 0.85);
+   --icon-color: #666;
+}
+header {
+   color: var(--main);
+   margin-top: 80px;
+   font-size: 1.8rem;
+   transition: color 0.2s;
+}
+form {
+   margin-top: 40px;
+}
+header,
+form {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.wrapper {
+   overflow: hidden;
+}
+.switcher {
+   padding: 25px;
+   position: absolute;
+   top: 0;
+   right: 0;
+}
+.swCheckbox {
+   display: none;
+}
+.swCheckbox:checked ~ .swToggle {
+   background-color: var(--main);
+   box-shadow: 0 0 0 2.5px var(--main);
+}
+.swCheckbox:checked ~ .swToggle::before {
+   background-color: var(--icon-color);
+   transform: translateX(calc(2.75rem / 2));
+}
+.swToggle {
+   position: relative;
+   user-select: none;
+   background-color: var(--main);
+   width: 2.75rem;
+   height: calc(2.75rem / 2);
+   border-radius: 20px;
+   box-shadow: 0 0 0 2.5px var(--main);
+   transition: background-color 0.2s;
+   cursor: pointer;
+}
+.swToggle::before {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: calc(2.75rem / 2);
+   height: calc(2.75rem / 2);
+   background-color: var(--icon-color);
+   border-radius: 20px;
+   transition: background-color 0.2s, ease-out transform 0.2s;
+}
+.input {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.todoInput,
+.todoButton {
+   outline: none;
+   border: none;
+   background-color: var(--main);
+   padding: 0.5rem;
+   font-size: 2rem;
+   transition: color 0.2s, background-color 0.2s;
+}
+.todoInput {
+   color: var(--text);
+   border-radius: 5px 0 0 5px;
+}
+.todoInput:focus {
+   background-color: var(--input-focus);
+}
+.todoButton {
+   border-radius: 0 5px 5px 0;
+   width: 3.7rem;
+   color: var(--icon-color);
+   cursor: pointer;
+}
+.todoButton:hover {
+   color: var(--main);
+   background-color: var(--icon-color);
+}
+.select {
+   margin-left: 1rem;
+   position: relative;
+}
+.todoSelect {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   border: none;
+   outline: none;
+   background-color: var(--main);
+   width: 11.6rem;
+   color: var(--text);
+   cursor: pointer;
+   padding: 0.6rem;
+   height: 54px;
+   border-radius: 5px;
+   font-size: 1.1rem;
+   transition: color 0.2s, background-color 0.2s;
+}
+.select::after {
+   border-radius: 0 5px 5px 0;
+   content: '\25BC';
+   position: absolute;
+   pointer-events: none;
+   top: 0;
+   right: 0;
+   color: var(--icon-color);
+   background-color: var(--main);
+   height: 54px;
+   padding: 1.15rem;
+   transition: color 0.2s, background-color 0.2s;
+}
+.select:hover::after {
+   background-color: var(--icon-color);
+   color: var(--main);
+}
+.todoContainer {
+   margin-top: 40px;
+   display: flex;
+   justify-content: center;
+}
+.todoList {
+   list-style: none;
+   min-width: 415px;
+   max-width: 650px;
+}
+.todo {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   font-size: 1.5rem;
+   background-color: var(--main);
+   margin: 0.6rem 0;
+   font-weight: 500;
+   border-radius: 3.5px;
+   transition: transform 0.2s, opacity 0.2s, background-color 0.2s;
+}
+.todoText {
+   color: var(--text);
+   padding: 0.4rem 0.5rem;
+   flex: 1;
+   transition: color 0.2s;
+}
+.buttons {
+   display: flex;
+   justify-content: center;
+   align-self: stretch;
+}
+.buttons.vertical {
+   flex-direction: column;
+}
+.buttons.vertical .checkButton,
+.deleteButton {
+   height: 100%;
+}
+.buttons.vertical .checkButton {
+   border-radius: 0 3.5px 0 0;
+}
+.buttons.vertical .deleteButton {
+   border-radius: 0 0 3.5px 0;
+}
+.checkButton,
+.deleteButton {
+   width: 45px;
+   border: none;
+   background-color: var(--main);
+   padding: 0.5rem;
+   font-size: 1.5rem;
+   color: var(--icon-color);
+   cursor: pointer;
+   outline: none;
+   transition: color 0.2s, background-color 0.2s;
+}
+body[class='dark'] .checkButton:hover,
+body[class='dark'] .deleteButton:hover {
+   color: var(--main);
+}
+.checkButton:hover,
+.deleteButton:hover {
+   color: #fff;
+}
+.deleteButton {
+   border-radius: 0 3.5px 3.5px 0;
+}
+.checkButton:hover {
+   background-color: #32cd32;
+}
+.deleteButton:hover {
+   background-color: #ff4040;
+}
+.completed {
+   text-decoration: line-through;
+   opacity: 0.55;
+}
+.deleting {
+   transform: translateX(400px);
+   opacity: 0;
+}
+@media (max-width: 1080px) {
+   form {
+      margin: 40px 15px 0;
+   }
+   .todoButton:hover,
+   .select:hover::after,
+   .checkButton:hover,
+   .deleteButton:hover {
+      color: var(--icon-color);
+      background-color: var(--main);
+   }
+   .todoInput {
+      width: 100%;
+   }
+}
+@media (max-width: 420px) {
+   header {
+      margin-top: 50px;
+      font-size: 1.275rem;
+      padding: 0 15px;
+   }
+   form {
+      flex-wrap: wrap;
+   }
+   .swToggle {
+      width: 2.3rem;
+      height: calc(2.3rem / 2);
+   }
+   .swToggle::before {
+      width: calc(2.3rem / 2);
+      height: calc(2.3rem / 2);
+   }
+   .swCheckbox:checked ~ .swToggle::before {
+      transform: translateX(calc(2.3rem / 2));
+   }
+   .todoInput,
+   .todoButton {
+      font-size: 1.9rem;
+   }
+   .input {
+      margin: 0 15px;
+   }
+   .select {
+      margin: 20px 15px;
+      width: 100%;
+      height: 100%;
+   }
+   .select::after {
+      height: 100%;
+      padding: 0.75rem;
+   }
+   .todoSelect {
+      height: 100%;
+      width: 100%;
+      font-size: 1.3rem;
+   }
+   .todoContainer {
+      margin: 10px 15px;
+   }
+   .todoList {
+      min-width: 100%;
+      margin: 0 15px;
+   }
+   .todo {
+      margin: 1rem 15px;
+      border-radius: 5px;
+      font-size: 1.4rem;
+   }
+   .buttons.mobile {
+      flex-direction: column;
+      align-self: center;
+   }
+   .buttons.mobile .checkButton {
+      border-radius: 0 3.5px 0 0;
+   }
+   .buttons.mobile .deleteButton {
+      border-radius: 0 0 3.5px 0;
+   }
+}
